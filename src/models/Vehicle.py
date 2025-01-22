@@ -1,12 +1,11 @@
 from abc import ABC, abstractmethod
 
 class Vehicle(ABC):
-    def __init__(self, model: str, manufacturer: str, year: int, type_of_fuel: str, engine: float):
+    def __init__(self, model: str, manufacturer: str, year: int, type_of_fuel: str):
         self.model = model
         self.manufacturer = manufacturer
         self.year = year
         self.type_of_fuel = type_of_fuel
-        self.engine = engine
 
     # Getter e Setter para o modelo
     @property
@@ -52,17 +51,6 @@ class Vehicle(ABC):
         if value not in valid_fuels:
             raise ValueError(f"Tipo de combustível inválido. Valores válidos: {', '.join(valid_fuels)}.")
         self._type_of_fuel = value
-
-    # Getter e Setter para o motor
-    @property
-    def engine(self):
-        return self._engine
-    
-    @engine.setter
-    def engine(self, value: float):
-        if value <= 0:
-            raise ValueError("O tamanho do motor deve ser maior que zero.")
-        self._engine = value
 
     @abstractmethod
     def vehicle_data(self):
